@@ -1,6 +1,6 @@
 # Civic Data Boundaries Adapter: U.S. Minnesota
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17560656.svg)](https://zenodo.org/records/17561813)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17560655.svg)](https://zenodo.org/records/17560655)
 [![License: CC BY 4.0](https://img.shields.io/badge/license-CC--BY--4.0-green.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Validate Catalog](https://github.com/civic-interconnect/civic-data-boundaries-us-mn/actions/workflows/validate.yml/badge.svg)](https://github.com/civic-interconnect/civic-data-boundaries-us-mn/actions/workflows/validate.yml)
 
@@ -54,7 +54,7 @@ The Secretary of State website does **not specify an open data license**.
 
 This repository and associated Zenodo record:
 
-- Reference, but do not redistribute, the official precinct geometry files.
+- Reference, without redistributing, the official precinct geometry files.
 - Provide metadata, schemas, and configuration files for reproducible standardization.
 - License derivative documentation and configuration files under  
   [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).

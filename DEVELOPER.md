@@ -69,9 +69,11 @@ After confirming all checks pass:
 
 After pushing a new tag:
 
-1. Upload new release archive (civic-data-boundaries-us-mn-2025-04-r#.zip) to Zenodo where # is the next incremental zipfile iteration. 
-2. Zenodo generates a new record ID.
-3. Copy that record DOI into CITATION.cff under preferred-citation.doi.
-4. Copy that record into README.md Zenodo badge. 
-5. Git add-commit-push CITATION.cff + README.md updates referencing the new DOI.
+1. Increment the version in `scripts/make_dataset_zip.sh`.
+2. Create a new zipfile by running: `./scripts/make_dataset_zip.sh`
+3. Upload new release archive (civic-data-boundaries-us-mn-2025-04-r#.zip) to Zenodo where # is the next incremental zipfile iteration. 
+4. Zenodo generates a new record ID.
+5. Copy that record DOI into CITATION.cff under preferred-citation.doi.
+6. Copy that record into README.md Zenodo badge. 
+7. Git add-commit-push CITATION.cff + README.md updates referencing the new DOI.
    

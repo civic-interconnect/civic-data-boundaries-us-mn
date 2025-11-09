@@ -1,27 +1,29 @@
 #!/usr/bin/env bash
-# Create dataset ZIP (works on Windows Git Bash with PowerShell fallback)
-# This version excludes all geometry or derived boundary data.
+# Create dataset ZIP containing all tracked (non-ignored) files.
+# Works in Git Bash on Windows, macOS, and Linux.
 
 set -euo pipefail
-VERSION="2025-04-r1"
-ZIPNAME="civic-data-boundaries-us-mn-${VERSION}.zip"
-OUTDIR="dist"
-mkdir -p "$OUTDIR"
 
+VERSION="2025-04-v3"
+OUTDIR="dist"
+ZIPNAME="civic-data-boundaries-us-mn-${VERSION}.zip"
 ZIPPATH="${OUTDIR}/${ZIPNAME}"
+
+mkdir -p "$OUTDIR"
 echo "Creating dataset archive: $ZIPPATH"
 
+# Generate list of tracked files (respects .gitignore automatically)
+FILES=$(git ls-files)
+
 if command -v zip >/dev/null 2>&1; then
-  zip -r "$ZIPPATH" \
-    README.md \
-    manifest.json \
-    LICENSE \
-    CITATION.cff 
+  # -r is not needed when providing explicit file list; use -@ to read from stdin
+  echo "$FILES" | zip -@ "$ZIPPATH"
 else
-  echo "zip command not found, using PowerShell..."
-  powershell.exe -Command "
-    Compress-Archive -Force -Path README.md, manifest.json, LICENSE, CITATION.cff \
-    -DestinationPath '${ZIPPATH}'
+  echo "zip command not found, using PowerShell fallback."
+  # Convert file list to a PowerShell array and compress
+  pwsh -Command "
+    \$files = @($(echo "$FILES" | sed 's/^/\"/' | sed 's/$/\"/' | paste -sd, -))
+    Compress-Archive -Force -Path \$files -DestinationPath '${ZIPPATH}'
   "
 fi
 

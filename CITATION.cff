@@ -5,8 +5,8 @@ authors:
   - family-names: Case
     given-names: Denise
     affiliation: Civic Interconnect
-version: "2025-04-v2"
-date-released: 2025-11-08
+version: "2025-04-v3"
+date-released: 2025-11-09
 license: "CC-BY-4.0"
 repository-code: "https://github.com/civic-interconnect/civic-data-boundaries-us-mn"
 abstract: >
@@ -34,11 +34,16 @@ preferred-citation:
       affiliation: Civic Interconnect
   title: "Civic Interconnect - Geographic Data - US Minnesota"
   year: 2025
-  version: "2025-04-v2"
-  doi: 10.5281/zenodo.17561813
+  version: "2025-04-v3"
+  doi: 10.5281/zenodo.17560655  # all versions
 
 references:
   - type: dataset
     title: "Voting Precincts Shapefiles and GeoJSON - Minnesota Secretary of State"
     url: "https://www.sos.mn.gov/election-administration-campaigns/data-maps/voting-precincts/"
-    note: "Original boundary data source. License not specified by the Minnesota Secretary of State."
+    note: >
+      Original boundary data source. License not specified by the Minnesota Secretary of State. 
+      These files are intended to provide basic information regarding the location of election 
+      districts within the state. For the most accurate information on precincts and districts, 
+      as well as polling place information, please use the Polling Place Finder at 
+      https://pollfinder.sos.mn.gov/.
