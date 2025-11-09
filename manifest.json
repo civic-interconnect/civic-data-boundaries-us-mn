@@ -84,6 +84,12 @@
           "county_commission": "CtyComDist"
         },
         "geometryTransform": "geometryCollection_to_multiPolygon"
+      },
+      "adapter": {
+        "browser": {
+          "url": "https://civic-interconnect.github.io/civic-data-boundaries-us-mn/js/adapter.js",
+          "global": "MinnesotaAdapter"
+        }
       }
     },
     "counties": {
