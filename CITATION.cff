@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+title: "Civic Interconnect - Geographic Data - US Minnesota"
+authors:
+  - family-names: Case
+    given-names: Denise
+    affiliation: Civic Interconnect
+version: "2025-04-r1"
+date-released: 2025-11-08
+license: "CC-BY-4.0"
+repository-code: "https://github.com/civic-interconnect/civic-data-boundaries-us-mn"
+abstract: >
+  Metadata, configuration, and reproducible workflows for official Minnesota
+  precinct boundaries. Boundary geometries are obtained directly from the
+  Minnesota Secretary of State through the "Maps and Geodata" public resources
+  (e.g., Voting Precincts Shapefiles and GeoJSON). This record does not
+  redistribute any geometry data. Derived metadata and configurations are
+  released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+keywords:
+  - civic data
+  - geographic boundaries
+  - Minnesota
+  - precincts
+  - reproducible research
+  - open metadata
+  - GIS
+
+preferred-citation:
+  type: dataset
+  authors:
+    - family-names: Case
+      given-names: Denise
+      affiliation: Civic Interconnect
+  title: "Civic Interconnect - Geographic Data - US Minnesota"
+  year: 2025
+  version: "2025-04-r1"
+  doi: 10.5281/zenodo.17560656
+
+references:
+  - type: dataset
+    title: "Voting Precincts Shapefiles and GeoJSON - Minnesota Secretary of State"
+    url: "https://www.sos.mn.gov/election-administration-campaigns/data-maps/voting-precincts/"
+    note: "Original boundary data source. License not specified by the Minnesota Secretary of State."

@@ -1,0 +1,6 @@
+{
+  "dataset": "civic-boundaries-us-mn",
+  "description": "Metadata and provenance for Minnesota precinct boundary layers.",
+  "license": "CC BY 4.0 (for metadata, configuration, and documentation). Original boundary data © Minnesota Secretary of State, used under website Terms & Conditions (no explicit license).",
+  "generated_at": "2025-11-08T18:20:22Z"
+}
