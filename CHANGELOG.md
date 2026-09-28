@@ -186,7 +186,6 @@ git push origin :refs/tags/vX.Z.Y
 [Unreleased]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/compare/v1.0.4...HEAD
 [1.0.4]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.4
 [1.0.3]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.3
-[1.0.1]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.1
 [1.0.0]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.0
 
 <!-- markdownlint-enable MD024 -->
