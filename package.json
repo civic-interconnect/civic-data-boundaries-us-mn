@@ -9,10 +9,9 @@
     "test:unit": "node --test --test-reporter=spec tests/adapter.test.js",
     "test:integration": "node --test --test-reporter=spec tests/adapter.integration.test.js",
     "test:watch": "node --test --watch --test-reporter=spec tests/*.test.js",
-    "validate": "npm run validate:catalog",
-    "validate:catalog": "node scripts/validate-catalog.js",
-    "check": "npm run test && npm run validate",
-    "ci": "npm run test:unit && npm run test:integration && npm run validate"
+    "validate": "node scripts/validate-catalog.js",
+    "check": "npm run validate && npm test",
+    "ci": "npm run check"
   },
   "dependencies": {},
   "devDependencies": {

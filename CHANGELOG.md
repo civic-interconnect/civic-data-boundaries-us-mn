@@ -11,6 +11,10 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 ## [Unreleased]
 
+---
+
+## [1.1.0] - 2026-09-27
+
 ### Added
 
 - Added automated monitoring for changes to the official Minnesota Secretary of State precinct source.
@@ -28,10 +32,6 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 - Removed the obsolete `DEVELOPER.md`; development instructions are maintained in `README.md`.
 - Removed the Dependabot auto-merge workflow; Dependabot continues to propose GitHub Actions updates for review.
-
----
-
-## [1.0.4] - 2025-11-10
 
 ---
 
@@ -113,8 +113,9 @@ Run:
 # update
 npx npm-check-updates -u
 npm install
-npm run validate
-npm test
+npm audit
+
+# validate
 npm run check
 
 # Update GitHub Actions and pin all action references to immutable SHAs
@@ -183,7 +184,8 @@ git push origin :refs/tags/vX.Z.Y
 
 ## Links
 
-[Unreleased]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.1.0
 [1.0.4]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.4
 [1.0.3]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.3
 [1.0.0]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.0
