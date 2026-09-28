@@ -165,15 +165,11 @@ for example with a command like this:
 gh release create v1.1.0 --verify-tag --title "1.1.0"  --generate-notes
 ```
 
-After pushing a new tag:
+Then:
 
-1. Increment the version in `scripts/make_dataset_zip.sh`.
-2. Create a new zipfile by running: `./scripts/make_dataset_zip.sh`
-3. Upload new release archive (civic-data-boundaries-us-mn-2025-04-r#.zip) to Zenodo where # is the next incremental zipfile iteration.
-4. Zenodo generates a new record ID.
-5. Copy that record DOI into CITATION.cff under preferred-citation.doi.
-6. Copy that record into README.md Zenodo badge.
-7. Git add-commit-push CITATION.cff and README.md updates referencing the new DOI.
+1. Confirm the GitHub Release was created successfully.
+2. In Zenodo, confirm the GitHub release was ingested and archived.
+3. Open the resulting Zenodo record and verify its metadata and DOI.
 
 ## Only As Needed (delete a tag)
 
