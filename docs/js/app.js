@@ -1,7 +1,7 @@
 /**
  * Application script to test fetchGeoLayerForRegion function
  * Path: docs/js/app.js
- * 
+ *
  */
 
 import { fetchGeoLayerForRegion } from "./manifest-loader.js";

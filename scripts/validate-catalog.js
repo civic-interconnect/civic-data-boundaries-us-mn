@@ -1,6 +1,6 @@
 /**
  * Validate catalog.json against JSON Schema (2020-12) using Ajv v8.
- * 
+ *
  * File: scripts/validate-catalog.js
  */
 

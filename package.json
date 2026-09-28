@@ -1,6 +1,6 @@
 {
   "name": "civic-data-boundaries-us-mn",
-  "version": "2025.04.4",
+  "version": "1.1.0",
   "description": "Minnesota boundary data adapter with validation",
   "type": "module",
   "main": "src/adapter.js",
@@ -16,9 +16,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "ajv": "^8.18.0",
+    "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
-    "eslint": "^9.39.1"
+    "eslint": "^10.11.0"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -36,6 +36,6 @@
   "author": "Denise Case, Civic Interconnect",
   "repository": {
     "type": "git",
-    "url": "https://github.com/denisecase/civic-data-us-mn.git"
+    "url": "https://github.com/civic-interconnect/civic-data-boundaries-us-mn.git"
   }
 }

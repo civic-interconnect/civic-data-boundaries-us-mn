@@ -4,7 +4,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/license-CC--BY--4.0-green.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Validate Catalog](https://github.com/civic-interconnect/civic-data-boundaries-us-mn/actions/workflows/validate.yml/badge.svg)](https://github.com/civic-interconnect/civic-data-boundaries-us-mn/actions/workflows/validate.yml)
 
-> Data adapter, metadata, and transformation functions for Minnesota boundary data.  
+> Data adapter, metadata, and transformation functions for Minnesota boundary data.
 > Converts the Minnesota Secretary of State GeoJSON format into the unified Civic Interconnect schema.
 
 ## Adapter
@@ -27,7 +27,7 @@ It includes:
 
 For programmatic discovery, see the machine-readable API catalog:
 
-- API catalog:  
+- API catalog:
   `https://raw.githubusercontent.com/civic-interconnect/civic-data-boundaries-us-mn/main/api/v1.0.0/catalog.json`
 
 ## Transformation Functions
@@ -37,8 +37,8 @@ Each function creates new immutable objects without modifying the original input
 
 ## Source and Licensing
 
-Official precinct boundary data are published by the  
-[Minnesota Secretary of State](https://www.sos.mn.gov/election-administration-campaigns/data-maps/voting-precincts/)  
+Official precinct boundary data are published by the
+[Minnesota Secretary of State](https://www.sos.mn.gov/election-administration-campaigns/data-maps/voting-precincts/)
 through the **Maps and Geodata** resources (e.g., Voting Precincts Shapefiles and GeoJSON) at <https://www.sos.mn.gov/media/2791/mn-precincts.json>.
 
 The Secretary of State website does **not specify an open data license**.
@@ -47,10 +47,43 @@ This repository and associated Zenodo record:
 
 - Reference, without redistributing, the official precinct geometry files.
 - Provide metadata, schemas, and configuration files for reproducible standardization.
-- License derivative documentation and configuration files under  
+- License repository software, metadata, schemas, configuration, and documentation under
   [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
 Users should review and comply with the Minnesota Secretary of State Terms & Conditions when accessing the original data.
 
-See `CITATION.cff` for citation details.
+## Developer
 
+Install **Git**, **VS Code**, and [**Node.js**](https://nodejs.org/).
+
+### Clone the Repo and Open in VS Code
+
+Open a machine terminal where you want the project:
+
+```shell
+git clone https://github.com/civic-interconnect/civic-data-boundaries-us-mn
+cd civic-data-boundaries-us-mn
+code .
+```
+
+### Set Up the Project
+
+```shell
+chmod +x .github/scripts/*.sh
+npx npm-check-updates -u
+npm install
+npm run validate
+npm test
+
+# or
+
+npm run check
+```
+
+## Citation
+
+[CITATION.cff](./CITATION.cff)
+
+## License
+
+[CC-BY-4.0](./LICENSE)
