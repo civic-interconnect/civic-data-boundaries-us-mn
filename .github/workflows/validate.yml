@@ -36,4 +36,4 @@ jobs:
         run: npm install
 
       - name: 4) Run catalog validation script
-        run: npm run validate:catalog
+        run: npm run validate
