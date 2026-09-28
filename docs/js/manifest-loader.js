@@ -12,7 +12,7 @@ import { fetchStateResource } from "./proxy-fetch.js";
 import {
   transformFeatureCollection,
   CRS84,
-} from "../../src/shared/transform.js";
+} from "./transform.js";
 
 export async function fetchGeoLayerForRegion(
   countryCode,
@@ -20,7 +20,7 @@ export async function fetchGeoLayerForRegion(
   layerName = "precincts",
 ) {
   // 1) load manifest.json from this repo
-  const manifestResp = await fetch("../manifest.json");
+  const manifestResp = await fetch("./manifest.json");
   if (!manifestResp.ok) {
     throw new Error(`Failed to load manifest.json: ${manifestResp.status}`);
   }

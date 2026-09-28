@@ -39,26 +39,17 @@ jobs:
       - name: 2) Build Pages artifact
         shell: bash
         run: |
-          mkdir -p _site/docs
-          mkdir -p _site/src/shared
+          mkdir -p _site/js
 
-          cp -R docs/. _site/docs/
+          # Publish the browser interface at the Pages root.
+          cp -R docs/. _site/
+
+          # Copy canonical repository resources needed by the browser.
           cp manifest.json _site/manifest.json
-          cp src/shared/transform.js _site/src/shared/transform.js
+          cp src/shared/transform.js _site/js/transform.js
 
-          cat > _site/index.html <<'EOF'
-          <!doctype html>
-          <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <meta http-equiv="refresh" content="0; url=./docs/">
-            <title>Minnesota Precinct Adapter</title>
-          </head>
-          <body>
-            <p><a href="./docs/">Open the Minnesota Precinct Adapter Test</a></p>
-          </body>
-          </html>
-          EOF
+          # Show exactly what will be deployed.
+          find _site -type f -print
 
       - name: 3) Configure Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
