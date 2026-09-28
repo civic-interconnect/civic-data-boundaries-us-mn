@@ -126,7 +126,12 @@ jobs:
 
       - name: 6) Fail when source requires review
         if: steps.check.outputs.changed == 'true'
+        env:
+          RECORDED_DATE: ${{ steps.check.outputs.recorded_date }}
+          SOURCE_DATE: ${{ steps.check.outputs.source_date }}
         shell: bash
         run: |
           echo "Minnesota boundary source has changed and requires review."
+          echo "Recorded source date: ${RECORDED_DATE}"
+          echo "Current source date:  ${SOURCE_DATE}"
           exit 1
