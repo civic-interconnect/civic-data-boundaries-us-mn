@@ -1,26 +1,32 @@
 /**
- * Application script to test fetchGeoLayerForRegion function
+ * Application script to test fetchGeoLayerForRegion function.
  * Path: docs/js/app.js
- *
  */
 
 import { fetchGeoLayerForRegion } from "./manifest-loader.js";
 
 const logEl = document.getElementById("log");
+const runButton = document.getElementById("run-test");
+
 const log = (...args) => {
   console.log(...args);
   logEl.textContent += args.join(" ") + "\n";
 };
 
-(async () => {
+runButton.addEventListener("click", async () => {
+  runButton.disabled = true;
+  logEl.textContent = "";
+
   try {
     log("[test] Calling fetchGeoLayerForRegion('us','mn','precincts')...");
+
     const fc = await fetchGeoLayerForRegion("us", "mn", "precincts");
 
-    // cache/network info
     const info = window.__MN_GEO_CACHE_LAST_SOURCE;
+
     if (info && info.url) {
       const when = new Date(info.timestamp).toISOString();
+
       if (info.fromCache) {
         log(
           `[test] Warning: Using cached data for ${info.url} (stored ${when})`,
@@ -45,5 +51,7 @@ const log = (...args) => {
     log("[test] Success.");
   } catch (err) {
     log("[test] ERROR:", err && err.message ? err.message : String(err));
+  } finally {
+    runButton.disabled = false;
   }
-})();
+});
