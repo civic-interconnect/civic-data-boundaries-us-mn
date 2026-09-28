@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/civic-interconnect/civic-ptag-core-schema/main/schema/ptag.open.schema.json",
+  "prefix": { "prov": "http://www.w3.org/ns/prov#", "civic": "https://civicinterconnect.org/ns#" },
+  "entity": {
+    "entity:mn_precincts_v2025_04": {
+      "prov:label": "Minnesota precincts (v2025-04)",
+      "type": "dataset",
+      "license": "CC-BY-4.0",
+      "rights": "References official geometry; original SoS site lacks explicit open license.",
+      "checksum": "sha256:REPLACE_AT_BUILD",
+      "doi": "10.5281/zenodo.REPLACE",
+      "releaseTag": "v2025-04",
+      "civic:domain": "elections",
+      "civic:stateCode": "MN",
+      "civic:layer": "precincts",
+      "civic:buildVersion": "2025-04"
+    },
+    "entity:source_mn_sos": {
+      "prov:label": "MN SoS - Voting Precincts",
+      "type": "source",
+      "prov:location": "https://www.sos.mn.gov/media/2791/mn-precincts.json"
+    },
+    "entity:geo_generator": {
+      "prov:label": "civic-geo-generator",
+      "type": "software",
+      "version": "0.9.0"
+    },
+    "entity:adapter_script": {
+      "prov:label": "mn precincts transform",
+      "type": "software",
+      "version": "v0.9.0",
+      "entrypoint": "adapters/mn/precincts/transform.js"
+    }
+  },
+  "agent": {
+    "agent:maintainer": { "prov:type": "prov:Person", "name": "Denise Case" }
+  },
+  "activity": {
+    "activity:build_2025_04": {
+      "prov:label": "MN precincts build 2025-04",
+      "reproCommand": "uv run civic-geo-generator build MN precincts --version 2025-04",
+      "softwareName": "civic_geo_generator",
+      "softwareVersion": "0.9.0",
+      "civic:geoAdapter": "mn_precincts@0.9.0",
+      "prov:startedAtTime": "2025-11-12T14:00:00Z",
+      "prov:endedAtTime": "2025-11-12T14:05:00Z"
+    }
+  },
+  "used": {
+    "_:u1": { "prov:activity": "activity:build_2025_04", "prov:entity": "entity:source_mn_sos" },
+    "_:u2": { "prov:activity": "activity:build_2025_04", "prov:entity": "entity:geo_generator" },
+    "_:u3": { "prov:activity": "activity:build_2025_04", "prov:entity": "entity:adapter_script" }
+  },
+  "wasGeneratedBy": {
+    "_:g1": { "prov:entity": "entity:mn_precincts_v2025_04", "prov:activity": "activity:build_2025_04" }
+  },
+  "wasAttributedTo": {
+    "_:a1": { "prov:entity": "entity:mn_precincts_v2025_04", "prov:agent": "agent:maintainer" }
+  }
+}

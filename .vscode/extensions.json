@@ -1,0 +1,44 @@
+// ============================================================
+// .vscode/extensions.json (ALL-REPOS)
+// ============================================================
+// Updated: 2026-08-15
+// Basis: cross-platform (all 3 OS), popular, reliable.
+// NOTE: Comments are not allowed in standard JSON files,
+//       but Microsoft allows them in their .vscode config files (JSONC).
+//       "recommendations" prompt on a fresh clone;
+//       "unwantedRecommendations" are hidden.
+//       A formatter named in settings.json should be recommended here
+//       or formatting silently does nothing on a clone.
+//       This is the BASE ALL repo layer: no language-specific tools.
+{
+  "recommendations": [
+    // ============================================================
+    // === MARKDOWN AND DOCUMENTATION ===
+    // ============================================================
+    "yzhang.markdown-all-in-one", // Shortcuts, TOC, formatting for .md files
+    "bierner.markdown-preview-github-styles", // GitHub-style markdown preview
+    "esbenp.prettier-vscode", // Markdown formatting (see [markdown] in settings.json)
+    "denisecase.comment-section-outline", // Show "# === Section ===" banners in the Outline view
+    // "bierner.markdown-mermaid", // Diagram rendering in markdown (flowcharts, etc.)
+
+    // ============================================================
+    // === DATA FILES AND CONFIGURATION ===
+    // ============================================================
+    "redhat.vscode-yaml", // YAML syntax, validation, formatting
+    "tamasfe.even-better-toml", // TOML syntax, validation
+
+    // ============================================================
+    // === PROJECT INFRASTRUCTURE ===
+    // ============================================================
+    "editorconfig.editorconfig", // Respects .editorconfig settings (indentation, line endings)
+    "github.vscode-github-actions" // Syntax highlighting for .github/workflows/*.yml
+  ],
+  "unwantedRecommendations": [
+    // ============================================================
+    // === NOT RECOMMENDED: CONFLICTS WITH CURRENT SETUP ===
+    // ============================================================
+    "ms-vscode.live-server", // Not needed for these projects
+    "ritwickdey.liveserver", // Duplicate of above
+    "ms-vscode-remote.remote-containers" // OPTIONAL: Not recommended - local dev preferred
+  ]
+}

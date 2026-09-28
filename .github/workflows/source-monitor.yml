@@ -1,0 +1,132 @@
+# .github/workflows/source-monitor.yml
+
+name: Source Monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly, Sunday at 12:17 UTC.
+    - cron: "17 12 * * 0"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-minnesota-source:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1) Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: 2) Download current Minnesota precinct source
+        shell: bash
+        run: |
+          curl --fail --location --silent --show-error \
+            "https://www.sos.mn.gov/media/2791/mn-precincts.json" \
+            --output /tmp/mn-precincts.json
+
+      - name: 3) Compare source date
+        id: check
+        shell: python
+        run: |
+          import json
+          import os
+          from datetime import datetime
+          from pathlib import Path
+
+          manifest = json.loads(
+              Path("manifest.json").read_text(encoding="utf-8")
+          )
+
+          source = json.loads(
+              Path("/tmp/mn-precincts.json").read_text(encoding="utf-8")
+          )
+
+          recorded_date = manifest["metadata"]["lastUpdated"]
+          source_date_raw = source.get("date", "").strip()
+
+          if not source_date_raw:
+              raise RuntimeError(
+                  "Official source does not contain the expected 'date' field."
+              )
+
+          source_date = datetime.strptime(
+              source_date_raw.replace(",", ", "),
+              "%B %d, %Y",
+          ).date().isoformat()
+
+          print(f"Recorded source date: {recorded_date}")
+          print(f"Current source date:  {source_date}")
+          print(f"Source date as given: {source_date_raw}")
+
+          changed = source_date != recorded_date
+
+          with open(
+              os.environ["GITHUB_OUTPUT"],
+              "a",
+              encoding="utf-8",
+          ) as output:
+              output.write(
+                  f"changed={'true' if changed else 'false'}\n"
+              )
+              output.write(f"recorded_date={recorded_date}\n")
+              output.write(f"source_date={source_date}\n")
+
+      - name: 4) Check for existing source-update issue
+        if: steps.check.outputs.changed == 'true'
+        id: issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          issue_number="$(
+            gh issue list \
+              --state open \
+              --search '"Minnesota boundary source changed" in:title' \
+              --json number \
+              --jq '.[0].number // empty'
+          )"
+
+          echo "number=$issue_number" >> "$GITHUB_OUTPUT"
+
+      - name: 5) Create source-update issue
+        if: >
+          steps.check.outputs.changed == 'true' &&
+          steps.issue.outputs.number == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RECORDED_DATE: ${{ steps.check.outputs.recorded_date }}
+          SOURCE_DATE: ${{ steps.check.outputs.source_date }}
+        shell: bash
+        run: |
+          gh issue create \
+            --title "Minnesota boundary source changed" \
+            --body "$(cat <<EOF
+          The official Minnesota Secretary of State precinct source has a
+          different source date than the date recorded in \`manifest.json\`.
+
+          Repository manifest date: \`${RECORDED_DATE}\`
+
+          Current source date: \`${SOURCE_DATE}\`
+
+          Source:
+
+          https://www.sos.mn.gov/media/2791/mn-precincts.json
+
+          Review the upstream data and validate the adapter before updating
+          repository metadata or preparing a release.
+
+          This issue was created automatically by the Source Monitor workflow.
+          EOF
+          )"
+
+      - name: 6) Fail when source requires review
+        if: steps.check.outputs.changed == 'true'
+        shell: bash
+        run: |
+          echo "Minnesota boundary source has changed and requires review."
+          exit 1

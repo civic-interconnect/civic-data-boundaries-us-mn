@@ -27,7 +27,7 @@ class MinnesotaAdapter {
         url: src.url,
       }));
     } else {
-      // fallback hard-coded CD URLs 
+      // fallback hard-coded CD URLs
       this.mode = "sources";
       this.sources = SOURCE_LIST;
     }

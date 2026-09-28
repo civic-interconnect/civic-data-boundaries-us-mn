@@ -1,8 +1,8 @@
 /**
  * Unit tests for catalog.json and manifest.json consistency
- * 
+ *
  * File: tests/catalog_adapter.test.js
- * 
+ *
  * Run with: node --test tests/catalog_adapter.test.js
  */
 
