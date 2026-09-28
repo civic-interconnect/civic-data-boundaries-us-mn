@@ -5,7 +5,11 @@
  * File: src/adapter.js (Node)
  */
 
-import { CRS84, transformFeatureCollection, mergeFeatureCollections } from "./shared/transform.js";
+import {
+  CRS84,
+  transformFeatureCollection,
+  mergeFeatureCollections,
+} from "./shared/transform.js";
 import manifest from "../manifest.json" with { type: "json" };
 import SOURCE_LIST from "./shared/sources.js";
 
@@ -23,7 +27,10 @@ class MinnesotaAdapter {
     } else if (precinctLayer && Array.isArray(precinctLayer.sources)) {
       this.mode = "sources";
       this.sources = precinctLayer.sources.map((src) => ({
-        cd: typeof src.id === "string" ? src.id.replace(/^cd/, "") : String(src.id),
+        cd:
+          typeof src.id === "string"
+            ? src.id.replace(/^cd/, "")
+            : String(src.id),
         url: src.url,
       }));
     } else {
@@ -60,7 +67,9 @@ class MinnesotaAdapter {
 
   async fetchStatewide() {
     if (!this.precinctUrl) {
-      throw new Error("[MinnesotaAdapter] fetchStatewide called without precinctUrl");
+      throw new Error(
+        "[MinnesotaAdapter] fetchStatewide called without precinctUrl",
+      );
     }
     const response = await fetch(this.precinctUrl);
     if (!response.ok) {
@@ -91,19 +100,18 @@ class MinnesotaAdapter {
     }
 
     const fetchPromises = this.sources.map((s) =>
-      this.fetchDistrict(s).catch(() => null)
+      this.fetchDistrict(s).catch(() => null),
     );
     const results = (await Promise.all(fetchPromises)).filter(Boolean);
-if (results.length === 0) {
-  throw new Error(
-    "[MinnesotaAdapter] Failed to fetch any precinct data from upstream sources"
-  );
-}
-
+    if (results.length === 0) {
+      throw new Error(
+        "[MinnesotaAdapter] Failed to fetch any precinct data from upstream sources",
+      );
+    }
 
     // Transform each district FC, then merge
     const transformed = results.map((fc) =>
-      this.schema ? transformFeatureCollection(fc, this.schema) : fc
+      this.schema ? transformFeatureCollection(fc, this.schema) : fc,
     );
     const merged = mergeFeatureCollections(transformed);
 

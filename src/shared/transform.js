@@ -87,7 +87,7 @@ export function transformFeature(feature, schema = {}) {
   const transformedProps = transformProperties(sourceProps, propertyMap);
   const transformedGeom = transformGeometry(
     feature.geometry,
-    geometryTransform
+    geometryTransform,
   );
 
   return {
@@ -107,7 +107,7 @@ export function transformFeatureCollection(featureCollection, schema = {}) {
   }
 
   const transformedFeatures = featureCollection.features.map((f) =>
-    transformFeature(f, schema)
+    transformFeature(f, schema),
   );
 
   return {

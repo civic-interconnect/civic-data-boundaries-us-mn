@@ -23,12 +23,10 @@ const log = (...args) => {
       const when = new Date(info.timestamp).toISOString();
       if (info.fromCache) {
         log(
-          `[test] Warning: Using cached data for ${info.url} (stored ${when})`
+          `[test] Warning: Using cached data for ${info.url} (stored ${when})`,
         );
       } else {
-        log(
-          `[test] Success: Fetched fresh data for ${info.url} at ${when}`
-        );
+        log(`[test] Success: Fetched fresh data for ${info.url} at ${when}`);
       }
     } else {
       log("[test] (No cache metadata available)");

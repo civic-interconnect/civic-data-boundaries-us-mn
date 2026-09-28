@@ -13,6 +13,15 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 ---
 
+## [1.1.1] - 2026-09-27
+
+### Fixed
+
+- Fixed GitHub Pages deployment so browser-based adapter test
+  can access canonical `manifest.json` and `src/shared/transform.js` files without duplicating the source files.
+
+---
+
 ## [1.1.0] - 2026-09-27
 
 ### Added

@@ -17,7 +17,7 @@ import {
 export async function fetchGeoLayerForRegion(
   countryCode,
   regionCode,
-  layerName = "precincts"
+  layerName = "precincts",
 ) {
   // 1) load manifest.json from this repo
   const manifestResp = await fetch("../manifest.json");
@@ -38,9 +38,7 @@ export async function fetchGeoLayerForRegion(
   // 3a) statewide URL path
   if (layerDef.url) {
     const raw = await fetchStateResource(layerDef.url); // already JSON
-    const transformed = schema
-      ? transformFeatureCollection(raw, schema)
-      : raw;
+    const transformed = schema ? transformFeatureCollection(raw, schema) : raw;
     features = transformed.features;
   }
   // 3b) per-source / per-CD path
@@ -58,16 +56,16 @@ export async function fetchGeoLayerForRegion(
             "[manifest-loader] Skipping",
             src.url,
             "-",
-            err && err.message ? err.message : String(err)
+            err && err.message ? err.message : String(err),
           );
           return [];
         }
-      })
+      }),
     );
     features = results.flat();
   } else {
     throw new Error(
-      `Layer '${layerName}' has neither url nor sources in manifest.json`
+      `Layer '${layerName}' has neither url nor sources in manifest.json`,
     );
   }
 

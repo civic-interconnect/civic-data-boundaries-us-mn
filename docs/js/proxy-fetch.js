@@ -33,7 +33,7 @@ export async function fetchStateResource(url) {
   const trimmed = text.trim();
   if (trimmed.startsWith("<!DOCTYPE") || trimmed.startsWith("<html")) {
     throw new Error(
-      `Remote returned HTML (likely WAF/captcha) instead of GeoJSON for ${url}`
+      `Remote returned HTML (likely WAF/captcha) instead of GeoJSON for ${url}`,
     );
   }
 
