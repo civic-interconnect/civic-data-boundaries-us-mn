@@ -1,6 +1,6 @@
 {
   "name": "civic-data-boundaries-us-mn",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Minnesota boundary data adapter with validation",
   "type": "module",
   "main": "src/adapter.js",

@@ -3,7 +3,7 @@
   "description": "Metadata and provenance for Minnesota precinct boundary layers.",
   "license": "CC BY 4.0 (for repository software, metadata, configuration, and documentation). Boundary data © Minnesota Secretary of State, used under website Terms & Conditions (no explicit license).",
   "generated_at": "2026-09-27T18:20:22Z",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "state": {
     "code": "MN",
     "name": "Minnesota",

@@ -15,10 +15,18 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 ## [1.1.1] - 2026-09-27
 
+### Added
+
+- Added a button for running the live browser-based adapter test
+  to avoid rate-limiting our requests.
+
 ### Fixed
 
-- Fixed GitHub Pages deployment so browser-based adapter test
-  can access canonical `manifest.json` and `src/shared/transform.js` files without duplicating the source files.
+- Fixed GitHub Pages deployment so the browser-based adapter test can use the
+  canonical `manifest.json` and `src/shared/transform.js` without maintaining
+  duplicate source files.
+- Prevented the live Minnesota Secretary of State request from running
+  automatically when the Pages site loads.
 
 ---
 
@@ -61,10 +69,6 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 - **Functional adapter (js/adapter.js)** to fetch and transform precinct data.
 - **Functional transformer (js/transform.js)** with manifest-driven schema mapping.
 
----
-
-## [1.0.1] - 2025-11-08
-
 ### Changed
 
 - **Clarified licensing and provenance.**
@@ -88,9 +92,7 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
   - **MAJOR** – breaking changes
   - **MINOR** – backward-compatible additions
   - **PATCH** – fixes, documentation, tooling
-- Versions are driven by git tags via `setuptools_scm`.
-  Tag the repository with `vX.Y.Z` to publish a release.
-- Documentation and badges are updated per tag and aliased to **latest**.
+- Tag the repository with `vX.Y.Z` to publish a release.
 
 ## Release Procedure (Required)
 
@@ -102,7 +104,7 @@ Follow these steps exactly when creating a new release.
 2. Open your profile menu in the upper-right.
 3. Select My account / Settings / GitHub.
 4. In GitHub Repositories / Click **Sync now**.
-5. Find structural-explainability/ this repo.
+5. Find this organization / this repo.
 6. Turn on the repository toggle/slider.
 7. Refresh the page and confirm it appears as enabled.
 8. Zenodo will ingest future GitHub Releases from this repo.
@@ -155,8 +157,7 @@ git commit -m "Prep X.Y.Z"
 git push -u origin main
 ```
 
-Verify that all required GitHub Actions complete successfully,
-including the combined Zensical and Lean API documentation deployment.
+Verify that all required GitHub Actions complete successfully.
 
 ### Task 4. Tag and Push the Release
 
@@ -171,7 +172,7 @@ Create GitHub Release after setting up Zenodo and pushing a tag,
 for example with a command like this:
 
 ```shell
-gh release create v1.1.0 --verify-tag --title "1.1.0"  --generate-notes
+gh release create v1.1.1 --verify-tag --title "1.1.1"  --generate-notes
 ```
 
 Then:
@@ -189,7 +190,8 @@ git push origin :refs/tags/vX.Z.Y
 
 ## Links
 
-[Unreleased]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.1.1
 [1.1.0]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.1.0
 [1.0.4]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.4
 [1.0.3]: https://github.com/civic-interconnect/civic-data-boundaries-us-mn/releases/tag/v1.0.3
